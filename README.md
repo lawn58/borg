@@ -41,15 +41,15 @@
 
 Посмотреть, что же попало в наш бэкап! Список архивов внутри репозитория(на сервере):
 
-			/usr/local/bin/borg list MyBorgRepo/
+	/usr/local/bin/borg list MyBorgRepo/
 
 MyFirstBackup-2018-08-04_16:55:53    Sat, 2018-08-04 16:55:54 [89f7b5bccfb1ed2d72c8b84b1baf477a8220955c72e7fcf0ecc6cd5a9943d78d]
 
 Смотрим список файлов:
 
-			/usr/local/bin/borg list MyBorgRepo::MyFirstBackup-2018-08-04_16:55:53
+	/usr/local/bin/borg list MyBorgRepo::MyFirstBackup-2018-08-04_16:55:53
 
 
 Достаём файл из бэкапа (можно и весь каталог):
 
-			/usr/local/bin/borg extract MyBorgRepo::MyFirstBackup-2018-08-04_16:55:53 etc/hostname
+	/usr/local/bin/borg extract MyBorgRepo::MyFirstBackup-2018-08-04_16:55:53 etc/hostname
