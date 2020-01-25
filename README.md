@@ -9,11 +9,11 @@
       chmod +x /usr/local/bin/borg
 
 
-    На сервере бэкапов создаём пользователя borg:
+ На сервере бэкапов создаём пользователя borg:
 
     	 adduser borg
 
-    На клиенте генерируется SSH-ключ:
+  На клиенте генерируется SSH-ключ:
 
     	ssh-keygen
     	ssh-copy-id borg@IP_borg_server
@@ -22,14 +22,14 @@
 		
     	chown -R borg:borg ~borg/.ssh
 
-    Инициализируем borg repo на сервере с клиента:
+  Инициализируем borg repo на сервере с клиента:
 
     /usr/local/bin/borg init -e none borg@IP_borg_server:MyBorgRepo
 
 
-    Ключ -e служит для выбора метода шифрования репозиторияю. MyBorgRepo — это имя каталога, в котором будет borg repo (создавать его заранее не нужно — Borg всё сделает сам).
+  Ключ -e служит для выбора метода шифрования репозиторияю. MyBorgRepo — это имя каталога, в котором будет borg repo (создавать его заранее не нужно — Borg всё сделает сам).
     
-		Запускаем первый бэкап с помощью Borg (на клиенте):
+Запускаем первый бэкап с помощью Borg (на клиенте):
 
     /usr/local/bin/borg create --stats --list borg@IP_borg_server:MyBorgRepo::"MyFirstBackup-{now:%Y-%m-%d_%H:%M:%S}" /etc /root
 
