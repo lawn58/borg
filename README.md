@@ -53,3 +53,26 @@ MyFirstBackup-2018-08-04_16:55:53    Sat, 2018-08-04 16:55:54 [89f7b5bccfb1ed2d7
 Достаём файл из бэкапа (можно и весь каталог):
 
 	/usr/local/bin/borg extract MyBorgRepo::MyFirstBackup-2018-08-04_16:55:53 etc/hostname
+
+
+Для автоматизации запуска резервного копирования по расписанию, можно использовать cron. 
+Для этого создаём директорию для логов:
+        
+        mkdir /var/log/borg
+
+И добавляем скрипт резервного копирования в крон:
+
+
+Для бэкапа через каждые 30 минут
+
+        crontab -e
+        30,59 * * * * /usr/local/bin/backup.sh > /dev/null 2>&1
+        
+Для бэкапа через каждые 10 минут
+
+        crontab -e
+        10,20,30,40,50,59 * * * * /usr/local/bin/backup.sh > /dev/null 2>&1
+Для бэкапа каждый день 12 часов ночи
+
+        crontab -e
+        0 0 * * * /usr/local/bin/backup.sh > /dev/null 2>&1
